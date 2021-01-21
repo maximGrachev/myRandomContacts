@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "MyRandomContacts"
+rootProject.name = "My Random Contacts"

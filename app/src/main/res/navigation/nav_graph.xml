@@ -3,24 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/users_list">
+    app:startDestination="@id/usersList5">
+
 
     <fragment
-        android:id="@+id/users_list"
-        android:name="ru.maxgrachev.myrandomcontacts.users_list"
-        android:label="fragment_users_list"
-        tools:layout="@layout/fragment_users_list" >
-        <action
-            android:id="@+id/action_users_list_to_user_info"
-            app:destination="@id/user_info" />
-    </fragment>
-    <fragment
-        android:id="@+id/user_info"
-        android:name="ru.maxgrachev.myrandomcontacts.user_info"
-        android:label="fragment_user_info"
-        tools:layout="@layout/fragment_user_info" >
-        <action
-            android:id="@+id/action_user_info_to_users_list"
-            app:destination="@id/users_list" />
-    </fragment>
+        android:id="@+id/usersList5"
+        android:name="ru.maxgrachev.myrandomcontacts.UsersList"
+        android:label="UsersList"
+        tools:layout="@layout/fragment_users_list"/>
 </navigation>
