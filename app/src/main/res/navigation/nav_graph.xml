@@ -8,7 +8,20 @@
 
     <fragment
         android:id="@+id/usersList5"
-        android:name="ru.maxgrachev.myrandomcontacts.UsersList"
+        android:name="ru.maxgrachev.myrandomcontacts.userslist.UsersList"
         android:label="UsersList"
-        tools:layout="@layout/fragment_users_list"/>
+        tools:layout="@layout/fragment_users_list">
+        <action
+            android:id="@+id/action_usersList5_to_userInfo"
+            app:destination="@id/userInfo" />
+    </fragment>
+    <fragment
+        android:id="@+id/userInfo"
+        android:name="ru.maxgrachev.myrandomcontacts.UserInfo"
+        android:label="UserInfo"
+        tools:layout="@layout/fragment_user_info">
+        <action
+            android:id="@+id/action_userInfo_to_usersList5"
+            app:destination="@id/usersList5" />
+    </fragment>
 </navigation>
