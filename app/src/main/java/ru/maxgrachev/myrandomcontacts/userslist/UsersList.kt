@@ -26,6 +26,9 @@ class UsersList : Fragment() {
             binding.responseText.text = it
         })
 
+        binding.refreshData.setOnClickListener(){
+            viewModel.getRandomUserProperies()
+        }
         return binding.root
     }
 }

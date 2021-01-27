@@ -1,5 +1,6 @@
 package ru.maxgrachev.myrandomcontacts.userslist
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,18 +21,20 @@ class UsersListViewModel : ViewModel() {
         getRandomUserProperies()
     }
 
-    private fun getRandomUserProperies() {
+    fun getRandomUserProperies() {
         RandomUserApi.retrofitSevice.getProperties().enqueue(
-            object : Callback<String> {
+            object : Callback<RandomUserProperty> {
                 override fun onResponse(
-                    call: Call<String>,
-                    response: Response<String>
+                    call: Call<RandomUserProperty>,
+                    response: Response<RandomUserProperty>
                 ) {
-                    _response.value = response.body()
+                    _response.value = "Success: ${response.body()?.results} users' properties retrieved"
+//                    Log.i("onResponce", "$a");
                 }
 
-                override fun onFailure(call: Call<String>, t: Throwable) {
+                override fun onFailure(call: Call<RandomUserProperty>, t: Throwable) {
                     _response.value = "Failure:" + t.message
+                    Log.i("onResponce", "Failure");
                 }
 
 
