@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="viewModel"
+            type="ru.maxgrachev.myrandomcontacts.userslist.UsersListViewModel" />
 
     </data>
 
@@ -34,7 +37,8 @@
             <TextView
                 android:id="@+id/responseText"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.property.Picture.large}"/>
         </ScrollView>
 
         <Button

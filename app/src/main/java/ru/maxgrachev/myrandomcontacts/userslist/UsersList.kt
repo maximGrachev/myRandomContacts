@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import ru.maxgrachev.myrandomcontacts.databinding.FragmentUsersListBinding
+import ru.maxgrachev.myrandomcontacts.databinding.UserListItemBinding
 
 class UsersList : Fragment() {
 
@@ -20,15 +21,18 @@ class UsersList : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding = FragmentUsersListBinding.inflate(inflater)
+//        val binding = FragmentUsersListBinding.inflate(inflater)
+        val binding = UserListItemBinding.inflate(inflater)
         binding.lifecycleOwner = this
-        viewModel.response.observe(viewLifecycleOwner, Observer{
-            binding.responseText.text = it
-        })
+        binding.viewModel = viewModel
 
-        binding.refreshData.setOnClickListener(){
-            viewModel.getRandomUserProperies()
-        }
+//        viewModel.property.observe(viewLifecycleOwner, Observer{
+//            binding.responseText.text = it.picture?.large
+//        })
+
+//        binding.refreshData.setOnClickListener(){
+//            viewModel.getRandomUserProperies()
+//        }
         return binding.root
     }
 }
