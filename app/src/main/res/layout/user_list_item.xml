@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="viewModel"
-            type="ru.maxgrachev.myrandomcontacts.userslist.UsersListViewModel" />
+            name="property"
+            type="ru.maxgrachev.myrandomcontacts.network.RandomUserProperty.Result" />
     </data>
 
     <LinearLayout
@@ -22,14 +22,14 @@
             android:padding="2dp"
             android:scaleType="centerCrop"
             android:layout_gravity="center_horizontal"
-            app:imageUrl="@{viewModel.property.Picture.large}"/>
+            app:imageUrl="@{property.Picture.large}"/>
 
         <TextView
             android:id="@+id/user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@{viewModel.property.Name.first+' '+viewModel.property.Name.last}"
+            android:text="@{property.Name.first+' '+property.Name.last}"
             android:textSize="16sp" />
     </LinearLayout>
 

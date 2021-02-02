@@ -19,7 +19,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface RandomUserApiService{
-    @GET("api/?results=50")
+    @GET("api/?results=500")
     suspend fun getProperties(): RandomUserProperty
 }
 

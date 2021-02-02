@@ -21,18 +21,15 @@ class UsersList : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-//        val binding = FragmentUsersListBinding.inflate(inflater)
-        val binding = UserListItemBinding.inflate(inflater)
+        val binding = FragmentUsersListBinding.inflate(inflater)
+//        val binding = UserListItemBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        binding.usersGrid.adapter = UserGridAdapter()
 
-//        viewModel.property.observe(viewLifecycleOwner, Observer{
-//            binding.responseText.text = it.picture?.large
-//        })
-
-//        binding.refreshData.setOnClickListener(){
-//            viewModel.getRandomUserProperies()
-//        }
+        binding.refreshData.setOnClickListener(){
+            viewModel.getRandomUserProperies()
+        }
         return binding.root
     }
 }

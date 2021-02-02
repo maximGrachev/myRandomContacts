@@ -15,9 +15,9 @@ class UsersListViewModel : ViewModel() {
     val response: LiveData<String>
         get() = _response
 
-    private val _property = MutableLiveData<RandomUserProperty.Result>()
-    val property: LiveData<RandomUserProperty.Result>
-        get() = _property
+    private val _properties = MutableLiveData<List<RandomUserProperty.Result>>()
+    val properties: LiveData<List<RandomUserProperty.Result>>
+        get() = _properties
 
     init {
         getRandomUserProperies()
@@ -26,11 +26,8 @@ class UsersListViewModel : ViewModel() {
     fun getRandomUserProperies() {
         viewModelScope.launch {
             try {
-                val listResult: RandomUserProperty = RandomUserApi.retrofitSevice.getProperties()
-                _response.value = "Success: ${listResult.results.size} users' properties retrieved"
-                if(listResult.results.isNotEmpty()){
-                    _property.value = listResult.results[0]
-                }
+                _properties.value = RandomUserApi.retrofitSevice.getProperties().results
+                _response.value = "Success: ${_properties.value!!.size} Users' properties retrieved"
             } catch (e: Exception) {
                 _response.value = "Failure: ${e.message}"
             }
