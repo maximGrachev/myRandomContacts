@@ -27,9 +27,6 @@ class UsersList : Fragment() {
         binding.viewModel = viewModel
         binding.usersGrid.adapter = UserGridAdapter()
 
-        binding.refreshData.setOnClickListener(){
-            viewModel.getRandomUserProperies()
-        }
         return binding.root
     }
 }

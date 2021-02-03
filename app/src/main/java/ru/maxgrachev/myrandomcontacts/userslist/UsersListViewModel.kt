@@ -8,12 +8,13 @@ import kotlinx.coroutines.launch
 import ru.maxgrachev.myrandomcontacts.network.RandomUserApi
 import ru.maxgrachev.myrandomcontacts.network.RandomUserProperty
 
+enum class RandomUserApiStatus{LOADING, ERROR, DONE}
 
 class UsersListViewModel : ViewModel() {
 
-    private val _response = MutableLiveData<String>()
-    val response: LiveData<String>
-        get() = _response
+    private val _status = MutableLiveData<RandomUserApiStatus>()
+    val status: LiveData<RandomUserApiStatus>
+        get() = _status
 
     private val _properties = MutableLiveData<List<RandomUserProperty.Result>>()
     val properties: LiveData<List<RandomUserProperty.Result>>
@@ -25,11 +26,12 @@ class UsersListViewModel : ViewModel() {
 
     fun getRandomUserProperies() {
         viewModelScope.launch {
+            _status.value = RandomUserApiStatus.LOADING
             try {
                 _properties.value = RandomUserApi.retrofitSevice.getProperties().results
-                _response.value = "Success: ${_properties.value!!.size} Users' properties retrieved"
+                _status.value = RandomUserApiStatus.DONE
             } catch (e: Exception) {
-                _response.value = "Failure: ${e.message}"
+                _status.value = RandomUserApiStatus.ERROR
             }
         }
     }
