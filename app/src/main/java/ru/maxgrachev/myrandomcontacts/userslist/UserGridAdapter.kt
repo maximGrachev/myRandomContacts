@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.maxgrachev.myrandomcontacts.databinding.UserListItemBinding
 import ru.maxgrachev.myrandomcontacts.network.RandomUserProperty
 
-class UserGridAdapter:ListAdapter<RandomUserProperty.Result, UserGridAdapter.RandomUserPropertyViewHolder>(DiffCallback){
+class UserGridAdapter(private val onClickListener: OnClickListener):ListAdapter<RandomUserProperty.Result, UserGridAdapter.RandomUserPropertyViewHolder>(DiffCallback){
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -22,6 +22,9 @@ class UserGridAdapter:ListAdapter<RandomUserProperty.Result, UserGridAdapter.Ran
         position: Int
     ) {
         val userProperty = getItem(position)
+        holder.itemView.setOnClickListener{
+            onClickListener.onClick(userProperty)
+        }
         holder.bind(userProperty)
     }
 
@@ -47,6 +50,9 @@ class UserGridAdapter:ListAdapter<RandomUserProperty.Result, UserGridAdapter.Ran
                 binding.property = userProperty
                 binding.executePendingBindings()
             }
+    }
 
+    class OnClickListener(val clickListener: (userInfo: RandomUserProperty.Result)->Unit){
+        fun onClick(userInfo: RandomUserProperty.Result) = clickListener(userInfo)
     }
 }

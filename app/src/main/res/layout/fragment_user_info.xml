@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="viewModel"
+            type="ru.maxgrachev.myrandomcontacts.userinfo.UserInfoViewModel" />
 
     </data>
 
@@ -19,35 +22,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:contentDescription="@string/user_pic_image"
-        android:src="@drawable/wpic"
+        app:imageUrl="@{viewModel.selectedUser.Picture.large}"
         android:gravity="center_horizontal"/>
 
     <TextView
         android:id="@+id/details_user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Name"
+        android:text="@{viewModel.selectedUser.Name.first + ' ' + viewModel.selectedUser.Name.last}"
         android:gravity="center_horizontal"/>
 
     <TextView
         android:id="@+id/details_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="City"
+        android:text="@{viewModel.selectedUser.Location.city}"
         android:gravity="center_horizontal"/>
 
     <TextView
         android:id="@+id/details_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Phone"
+        android:text="@{viewModel.selectedUser.phone}"
         android:gravity="center_horizontal"/>
 
     <TextView
         android:id="@+id/details_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="email"
+        android:text="@{viewModel.selectedUser.email}"
         android:gravity="center_horizontal"/>
 </LinearLayout>
 </layout>

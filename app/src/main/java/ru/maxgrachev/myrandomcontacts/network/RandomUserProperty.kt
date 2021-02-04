@@ -1,9 +1,13 @@
 package ru.maxgrachev.myrandomcontacts.network
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class RandomUserProperty(
     val info: Info,
     val results: List<Result>
-) {
+):Parcelable {
     data class Info(
         val page: Int,
         val results: Int,

@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import ru.maxgrachev.myrandomcontacts.databinding.FragmentUsersListBinding
 import ru.maxgrachev.myrandomcontacts.databinding.UserListItemBinding
 
@@ -25,7 +27,17 @@ class UsersList : Fragment() {
 //        val binding = UserListItemBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        binding.usersGrid.adapter = UserGridAdapter()
+        binding.usersGrid.adapter = UserGridAdapter(UserGridAdapter.OnClickListener{
+            viewModel.displayUserInfo(it)
+        })
+        viewModel.navigateToSelectedUser.observe(viewLifecycleOwner, Observer {
+            if(null!=it){
+                this.findNavController().navigate(
+                    UsersListDirections.actionUsersList5ToUserInfo(it)
+                )
+                viewModel.displayUserInfoComplete()
+            }
+        })
 
         return binding.root
     }

@@ -17,11 +17,15 @@
     </fragment>
     <fragment
         android:id="@+id/userInfo"
-        android:name="ru.maxgrachev.myrandomcontacts.UserInfo"
+        android:name="ru.maxgrachev.myrandomcontacts.userinfo.UserInfo"
         android:label="UserInfo"
         tools:layout="@layout/fragment_user_info">
         <action
             android:id="@+id/action_userInfo_to_usersList5"
             app:destination="@id/usersList5" />
+        <argument
+            android:name="selectedUserInfo"
+            app:argType="ru.maxgrachev.myrandomcontacts.network.RandomUserProperty.Result"
+            />
     </fragment>
 </navigation>
