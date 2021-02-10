@@ -6,7 +6,7 @@
     <data>
         <variable
             name="property"
-            type="ru.maxgrachev.myrandomcontacts.network.RandomUserProperty.Result" />
+            type="ru.maxgrachev.myrandomcontacts.network.Result" />
     </data>
 
     <LinearLayout

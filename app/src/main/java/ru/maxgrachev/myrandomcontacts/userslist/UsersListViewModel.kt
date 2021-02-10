@@ -6,8 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ru.maxgrachev.myrandomcontacts.network.RandomUserApi
-import ru.maxgrachev.myrandomcontacts.network.RandomUserProperty
-import java.util.*
+import ru.maxgrachev.myrandomcontacts.network.Result
 
 enum class RandomUserApiStatus { LOADING, ERROR, DONE }
 
@@ -17,12 +16,12 @@ class UsersListViewModel : ViewModel() {
     val status: LiveData<RandomUserApiStatus>
         get() = _status
 
-    private val _properties = MutableLiveData<List<RandomUserProperty.Result>>()
-    val properties: LiveData<List<RandomUserProperty.Result>>
+    private val _properties = MutableLiveData<List<Result>>()
+    val properties: LiveData<List<Result>>
         get() = _properties
 
-    private val _navigateToSelectedUser = MutableLiveData<RandomUserProperty.Result>()
-    val navigateToSelectedUser: LiveData<RandomUserProperty.Result>
+    private val _navigateToSelectedUser = MutableLiveData<Result>()
+    val navigateToSelectedUser: LiveData<Result>
         get() = _navigateToSelectedUser
 
     init {
@@ -41,7 +40,7 @@ class UsersListViewModel : ViewModel() {
         }
     }
 
-    fun displayUserInfo(userInfo: RandomUserProperty.Result){
+    fun displayUserInfo(userInfo: Result){
         _navigateToSelectedUser.value = userInfo
     }
 

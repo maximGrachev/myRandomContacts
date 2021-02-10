@@ -4,53 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="ru.maxgrachev.myrandomcontacts.userinfo.UserInfoViewModel" />
 
     </data>
 
-<LinearLayout
-    android:layout_margin="8dp"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_gravity="center_horizontal">
-
-    <ImageView
-        android:id="@+id/details_user_pic"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/user_pic_image"
-        app:imageUrl="@{viewModel.selectedUser.Picture.large}"
-        android:gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/details_user_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@{viewModel.selectedUser.Name.first + ' ' + viewModel.selectedUser.Name.last}"
-        android:gravity="center_horizontal"/>
+        <ImageView
+            android:id="@+id/details_user_pic"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:contentDescription="@string/user_pic_image"
+            android:padding="2dp"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            app:imageUrl="@{viewModel.selectedUser.Picture.large}" />
 
-    <TextView
-        android:id="@+id/details_city"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@{viewModel.selectedUser.Location.city}"
-        android:gravity="center_horizontal"/>
+        <TextView
+            android:id="@+id/details_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="20dp"
+            android:text="@{viewModel.selectedUser.Name.first + ' ' + viewModel.selectedUser.Name.last}" />
 
-    <TextView
-        android:id="@+id/details_phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@{viewModel.selectedUser.phone}"
-        android:gravity="center_horizontal"/>
+        <TextView
+            android:id="@+id/details_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="20dp"
+            android:text="@{viewModel.selectedUser.Location.city}" />
 
-    <TextView
-        android:id="@+id/details_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@{viewModel.selectedUser.email}"
-        android:gravity="center_horizontal"/>
-</LinearLayout>
+        <TextView
+            android:id="@+id/details_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="20dp"
+            android:text="@{viewModel.selectedUser.phone}" />
+
+        <TextView
+            android:id="@+id/details_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="20dp"
+            android:text="@{viewModel.selectedUser.email}" />
+    </LinearLayout>
 </layout>

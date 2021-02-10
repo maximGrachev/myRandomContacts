@@ -6,9 +6,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.maxgrachev.myrandomcontacts.databinding.UserListItemBinding
-import ru.maxgrachev.myrandomcontacts.network.RandomUserProperty
-
-class UserGridAdapter(private val onClickListener: OnClickListener):ListAdapter<RandomUserProperty.Result, UserGridAdapter.RandomUserPropertyViewHolder>(DiffCallback){
+import ru.maxgrachev.myrandomcontacts.network.Result
+class UserGridAdapter(private val onClickListener: OnClickListener):ListAdapter<Result, UserGridAdapter.RandomUserPropertyViewHolder>(DiffCallback){
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -28,17 +27,17 @@ class UserGridAdapter(private val onClickListener: OnClickListener):ListAdapter<
         holder.bind(userProperty)
     }
 
-    companion object DiffCallback: DiffUtil.ItemCallback<RandomUserProperty.Result>(){
+    companion object DiffCallback: DiffUtil.ItemCallback<Result>(){
         override fun areItemsTheSame(
-            oldItem: RandomUserProperty.Result,
-            newItem: RandomUserProperty.Result
+            oldItem: Result,
+            newItem: Result
         ): Boolean {
             return oldItem==newItem
         }
 
         override fun areContentsTheSame(
-            oldItem: RandomUserProperty.Result,
-            newItem: RandomUserProperty.Result
+            oldItem: Result,
+            newItem: Result
         ): Boolean {
             return oldItem.id == newItem.id
         }
@@ -46,13 +45,13 @@ class UserGridAdapter(private val onClickListener: OnClickListener):ListAdapter<
 
     class RandomUserPropertyViewHolder(private var binding: UserListItemBinding):
         RecyclerView.ViewHolder(binding.root){
-            fun bind(userProperty: RandomUserProperty.Result){
+            fun bind(userProperty: Result){
                 binding.property = userProperty
                 binding.executePendingBindings()
             }
     }
 
-    class OnClickListener(val clickListener: (userInfo: RandomUserProperty.Result)->Unit){
-        fun onClick(userInfo: RandomUserProperty.Result) = clickListener(userInfo)
+    class OnClickListener(val clickListener: (userInfo: Result)->Unit){
+        fun onClick(userInfo: Result) = clickListener(userInfo)
     }
 }

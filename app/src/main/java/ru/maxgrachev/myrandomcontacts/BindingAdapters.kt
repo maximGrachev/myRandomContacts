@@ -7,7 +7,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import ru.maxgrachev.myrandomcontacts.network.RandomUserProperty
+import ru.maxgrachev.myrandomcontacts.network.Result
 import ru.maxgrachev.myrandomcontacts.userslist.RandomUserApiStatus
 import ru.maxgrachev.myrandomcontacts.userslist.UserGridAdapter
 
@@ -29,7 +29,7 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
 @BindingAdapter("listData")
 fun bindRecyclerView(
     recyclerView: RecyclerView,
-    data: List<RandomUserProperty.Result>?){
+    data: List<Result>?){
     val adapter = recyclerView.adapter as UserGridAdapter
     adapter.submitList(data)
 }

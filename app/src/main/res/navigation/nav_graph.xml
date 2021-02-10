@@ -12,20 +12,16 @@
         android:label="UsersList"
         tools:layout="@layout/fragment_users_list">
         <action
-            android:id="@+id/action_usersList5_to_userInfo"
-            app:destination="@id/userInfo" />
+            android:id="@+id/action_usersList5_to_userInfoFragment"
+            app:destination="@id/userInfoFragment"
+            app:popUpTo="@id/usersList5" />
     </fragment>
     <fragment
-        android:id="@+id/userInfo"
-        android:name="ru.maxgrachev.myrandomcontacts.userinfo.UserInfo"
-        android:label="UserInfo"
-        tools:layout="@layout/fragment_user_info">
-        <action
-            android:id="@+id/action_userInfo_to_usersList5"
-            app:destination="@id/usersList5" />
+        android:id="@+id/userInfoFragment"
+        android:name="ru.maxgrachev.myrandomcontacts.userinfo.UserInfoFragment"
+        android:label="UserInfoFragment" >
         <argument
             android:name="selectedUserInfo"
-            app:argType="ru.maxgrachev.myrandomcontacts.network.RandomUserProperty.Result"
-            />
+            app:argType="ru.maxgrachev.myrandomcontacts.network.Result" />
     </fragment>
 </navigation>

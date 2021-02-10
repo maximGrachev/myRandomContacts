@@ -1,16 +1,14 @@
 package ru.maxgrachev.myrandomcontacts.userslist
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.LifecycleOwner
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import ru.maxgrachev.myrandomcontacts.databinding.FragmentUsersListBinding
-import ru.maxgrachev.myrandomcontacts.databinding.UserListItemBinding
 
 class UsersList : Fragment() {
 
@@ -33,7 +31,7 @@ class UsersList : Fragment() {
         viewModel.navigateToSelectedUser.observe(viewLifecycleOwner, Observer {
             if(null!=it){
                 this.findNavController().navigate(
-                    UsersListDirections.actionUsersList5ToUserInfo(it)
+                    UsersListDirections.actionUsersList5ToUserInfoFragment(it)
                 )
                 viewModel.displayUserInfoComplete()
             }
